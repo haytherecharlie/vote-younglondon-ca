@@ -12,7 +12,7 @@ const Ballot = ({ navigate }) => {
   }, [])
 
   return (
-    <PageLayout page="404" crawl={false} style={{ alignItems: 'center', justifyContent: 'center' }}>
+    <PageLayout page="ballot" crawl={false} style={{ alignItems: 'center', justifyContent: 'center' }}>
       {ward && <BallotForm />}
     </PageLayout>
   )

@@ -27,7 +27,7 @@ export default {
   // Input Style
   INPUT_STYLE: {
     boxSizing: 'border-box',
-    margin: `10px 0`,
+    margin: `15px 0 0 0`,
     width: `100%`,
     padding: `5px 10px 3px 10px`,
     border: 'none',

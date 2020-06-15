@@ -18,13 +18,18 @@ export const Radio = styled('input')({
   position: 'absolute',
   opacity: 0,
   cursor: 'pointer',
-  height: 20,
-  width: 20
+  height: 15,
+  width: 15,
+  border: '1px solid green',
+  '&:focus + div': {
+    outline: 'none',
+    boxShadow: `0 0 3px blue`
+  }
 })
 
 export const Box = styled('div')({
-  height: 20,
-  width: 20,
+  height: 15,
+  width: 15,
   borderRadius: `50%`,
   border: `2px solid ${theme.DEFAULT_COLOR}`
 })
@@ -34,9 +39,8 @@ export const Checkmark = styled('img')({
   position: 'absolute',
   top: -1,
   left: 5,
-  height: 20,
-  width: 20
+  height: 15,
+  width: 15
 })
 
-export const Name = styled('span')({
-})
+export const Name = styled('span')({})

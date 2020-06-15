@@ -4,7 +4,7 @@ import PageLayout from 'ui/layouts/PageLayout'
 
 const WardFinder = () => {
   return (
-    <PageLayout page="404" crawl={false} style={{ alignItems: 'center', justifyContent: 'center' }}>
+    <PageLayout page="ward" crawl={true} style={{ alignItems: 'center', justifyContent: 'center' }}>
       <FindWard />
     </PageLayout>
   )

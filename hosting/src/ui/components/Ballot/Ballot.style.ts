@@ -81,3 +81,8 @@ export const Vote = styled('button')({
   justifyContent: 'center',
   margin: `20px 0`
 })
+
+export const Error = styled('span')({
+  color: 'red',
+  fontSize: 12
+})

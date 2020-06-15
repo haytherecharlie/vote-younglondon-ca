@@ -1,5 +1,9 @@
 /* <--- APP ---> */
 export const ADDRESS = 'ADDRESS'
+export const CANDIDATES = 'CANDIDATES'
+
+/* <--- APP ---> */
+export const BALLOT = 'BALLOT'
 
 /* <--- UI ---> */
 export const DIMENSIONS = 'DIMENSIONS'
