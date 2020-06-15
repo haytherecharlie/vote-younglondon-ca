@@ -18,6 +18,7 @@ const WardFinder = () => {
 
   const selectPlaceInput = async ({ description }) => {
     try {
+      setValue(description)
       await geoLookup(description)
       return navigate('/ballot')
     } catch (err) {
