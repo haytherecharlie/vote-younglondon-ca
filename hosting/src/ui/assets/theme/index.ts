@@ -5,6 +5,7 @@ export default {
   DEFAULT_COLOR: '#262359',
   PRIMARY_COLOR: '#5A3DA3',
   SECONDARY_COLOR: '#99c047',
+  BRAND_COLOR: '#5A3DA3',
 
   // Media Queries
   SMALL_VIEW: 400,
@@ -16,7 +17,7 @@ export default {
 
   // Font Size
   FONT_SMALL: 15,
-  FONT_MEDIUM: 25,
+  FONT_MEDIUM: 20,
   FONT_LARGE: 35,
 
   // Font Weight

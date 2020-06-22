@@ -24,7 +24,7 @@ const SEO = ({ page, crawl }) => {
       <meta name="robots" content={crawl ? 'index, follow' : 'noindex, follow'} />
       <meta
         name="keywords"
-        content="Meet my neighbours, Meet neighbours app, Community communication, Neighborhood meeting, Neighbourhood forum, App to meet neighbors, Neighborhood communication, Meet with your neighbours, Speak with neighbours online, Ask your neighbours, How to meet neighbors in Toronto, Neighbours advice, Neighbours communication , Meet people in my neighborhood, Neighbourhood chat, Website to meet neighbors, Meet people who live next door"
+        content="Young London, LYAC, Election, Vote"
       />
       <meta name="author" content="Young London" />
       <meta name="publisher" content="Young London" />

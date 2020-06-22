@@ -47,7 +47,9 @@ const useValidateForm = () => {
       case 'referendum':
         return vReferendum(value) === 'valid'
           ? { ...state, referendum: { ...state.referendum, value, valid: valid ? valid : 'valid', error: null } }
-          : { ...state, referendum: { ...state.referendum, value, valid: 'invalid', error: null } }
+          : { ...state, referendum: { ...state.referendum, value, valid: 'invalid', error: null } } 
+      case 'already-voted': 
+        return { ...state, email: { ...state.email, valid: 'invalid', error: 'This email address has already voted.' } }
       case 'find-errors':
         return {
           first: vName(state.first.value) !== 'valid' ? { ...state.first, valid: 'invalid', error: 'Please include a valid first name.' } : state.first,

@@ -1,17 +1,25 @@
-import { db } from 'services/firebase'
+import qs from 'query-string'
+import { auth, db } from 'services/firebase'
+import store from 'services/redux'
 
-const verifyVote = async data => {
+const verifyVote = async () => {
   try {
-    const voteRef = db().collection('votes').doc(data.email)
-    const candidateRef = db().doc(`candidates/${data.vote}`)
-    const voteReq = await voteRef.get()
-
-    if (!voteReq.exists) {
-      return await Promise.all([voteRef.set(data), candidateRef.update({ votes: db.FieldValue.increment(1) })])
+    if (auth().isSignInWithEmailLink(window.location.href)) {
+      const { e: email, v: vote } = qs.parse(window.location.search)
+      await auth().signInWithEmailLink(email, window.location.href)
+      const voteRef = db().doc(`votes/${email}`)
+      const candidateRef = db().doc(`candidates/${vote}`)
+      const voteReq = await voteRef.get()
+      if (voteReq.exists) {
+        await Promise.all([
+          voteRef.update({ verified: true }),
+          candidateRef.update({ votes: db.FieldValue.increment(1) })
+        ])
+        return store.dispatch({ type: 'LOADING', loading: false })
+      }
     }
-
-    return false
   } catch (err) {
+    console.error(err)
     throw err
   }
 }

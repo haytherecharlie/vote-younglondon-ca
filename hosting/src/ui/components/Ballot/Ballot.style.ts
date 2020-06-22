@@ -19,8 +19,8 @@ export const Logo = styled('img')({
 })
 
 export const Sheet = styled('div')({
-  flex: 1,
-  padding: `20px 40px`,
+  flex: 0,
+  padding: `20px 40px 40px 40px`,
   borderRadius: 25,
   background: theme.BALLOT_COLOR,
   boxShadow: `0px 0px 10px rgba(0,0,0,0.1)`,
@@ -79,7 +79,7 @@ export const Vote = styled('button')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  margin: `20px 0`
+  margin: `40px 0 20px 0`
 })
 
 export const Error = styled('span')({

@@ -2,12 +2,12 @@ const { resolve } = require('path')
 
 module.exports = [
   /* ---- App ---- */
-  { path: '/', component: resolve(`src/ui/routes/Router.tsx`) },
-  { path: '/ballot', component: resolve(`src/ui/routes/Router.tsx`) },
+  { path: '/', component: resolve(`src/ui/pages/WardFinder.tsx`) },
+  { path: '/ballot', component: resolve(`src/ui/pages/Ballot.tsx`) },
   { path: '/check-email', component: resolve(`src/ui/pages/CheckEmail.tsx`) },
-  { path: '/thanks', component: resolve(`src/ui/pages/Thanks.tsx`) },
-  { path: '/verify', component: resolve(`src/ui/pages/Verify.tsx`) },
+  { path: '/redirect', component: resolve(`src/ui/pages/Redirect.tsx`) },
+  { path: '/verify', component: resolve(`src/ui/pages/VerifyVote.tsx`) },
 
   /* ---- 404 ---- */
-  { path: '/404', component: resolve(`src/ui/pages/404.tsx`) }
+  { matchPath: '*', path: '/404', component: resolve(`src/ui/pages/404.tsx`) }
 ]

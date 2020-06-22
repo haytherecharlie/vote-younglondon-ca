@@ -15,23 +15,24 @@ export const WardFinder = styled('div')({
   width: `100%`,
   minWidth: 300,
   transition: `top .5s, transform .5s`,
-  padding: 20
+  padding: 20,
+  marginTop: -50
 })
 
 export const Logo = styled('img')({
   height: `auto`,
-  width: 250,
+  width: 225,
   margin: `auto`,
   [theme.MEDIUM_QUERY]: {
-    width: 200
+    width: 150
   }
 })
 
 export const Divider = styled('div')({
-  width: '100%',
+  boxSizing: 'border-box',
   height: 1,
   background: theme.PRIMARY_COLOR,
-  margin: `20px auto 0px auto`
+  margin: `20px 10px 0px 10px`
 })
 
 export const HiddenWrapper = styled('div')({
@@ -42,12 +43,12 @@ export const HiddenWrapper = styled('div')({
   transition: `transform .5s`
 })
 
-export const Title = styled('h1')({
+export const Title = styled('h2')({
   textAlign: 'center',
-  fontSize: theme.FONT_LARGE,
+  fontSize: theme.FONT_MEDIUM,
   color: theme.PRIMARY_COLOR,
   [theme.MEDIUM_QUERY]: {
-    fontSize: theme.FONT_MEDIUM
+    fontSize: 20
   }
 })
 
@@ -55,12 +56,14 @@ export const Paragraph = styled('p')({
   textAlign: 'center',
   fontSize: theme.FONT_SMALL,
   opacity: 0.6,
-  margin: `10px 0`
+  margin: `10px 20px`
 })
 
 export const PlacesInput = styled('div')({
   margin: `auto`,
   width: `100%`,
+  boxSizing: 'border-box',
+  padding: 10,
   maxWidth: 350,
   display: 'flex',
   '& > .google-places-autocomplete': {

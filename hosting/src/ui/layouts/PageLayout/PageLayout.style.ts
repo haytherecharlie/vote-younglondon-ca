@@ -8,14 +8,17 @@ export const PageLayout = styled('div')({
   minHeight: `100vh`,
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'flex-start',
-  background: theme.BACKGROUND_COLOR
+  alignItems: 'stretch',
+  justifyContent: 'stretch',
+  background: theme.BACKGROUND_COLOR,
+  overflowX: 'hidden'
 })
 
 export const Main = styled('main')(P => ({
+  boxSizing: 'border-box',
   position: 'relative',
   width: `100%`,
+  margin: 'auto',
   maxWidth: theme.LARGE_VIEW,
   flex: 1,
   display: 'flex',

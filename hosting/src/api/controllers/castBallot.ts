@@ -1,11 +1,12 @@
 import qs from 'query-string'
-import { auth } from 'services/firebase'
+import { auth, db } from 'services/firebase'
 
 const castBallot = async (email, ballotObj) => {
   try {
-    const params = qs.stringify(ballotObj)
-    const options = { handleCodeInApp: true, url: `http://localhost:8000/verify?${params}` }
-    return await auth().sendSignInLinkToEmail(email, options)
+    const voteRef = db().collection('votes').doc(email)
+    const params = qs.stringify({ e: email, v: ballotObj.vote })
+    const options = { handleCodeInApp: true, url: `https://vote.younglondon.ca/verify?${params}` }
+    return await Promise.all([voteRef.set(ballotObj), auth().sendSignInLinkToEmail(email, options)])
   } catch (err) {
     throw err
   }

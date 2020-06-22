@@ -13,9 +13,9 @@ const LinkStyle = {
 }
 
 export const XLarge = styled('h1')(P => ({
-  fontSize: theme.FONT_XL,
+  fontSize: theme.FONT_LARGE,
   fontWeight: 500,
-  fontFamily: P.bold ? 'cocogoose' : 'helvetica',
+  fontFamily: 'lyac',
   letterSpacing: 0,
   color: theme.PRIMARY_COLOR,
   margin: 0,
@@ -25,9 +25,9 @@ export const XLarge = styled('h1')(P => ({
 }))
 
 export const Large = styled('h2')(P => ({
-  fontSize: theme.FONT_L,
+  fontSize: theme.FONT_LARGE,
   fontWeight: 500,
-  fontFamily: P.bold ? 'cocogoose' : 'helvetica',
+  fontFamily: 'lyac',
   letterSpacing: 0,
   color: theme.PRIMARY_COLOR,
   marginTop: 0,
@@ -36,9 +36,9 @@ export const Large = styled('h2')(P => ({
 }))
 
 export const Medium = styled('h3')(P => ({
-  fontSize: theme.FONT_M,
+  fontSize: theme.FONT_MEDIUM,
   fontWeight: 500,
-  fontFamily: P.bold ? 'cocogoose' : 'helvetica',
+  fontFamily: 'lyac',
   letterSpacing: 0,
   color: theme.PRIMARY_COLOR,
   marginTop: 0,
@@ -47,9 +47,9 @@ export const Medium = styled('h3')(P => ({
 }))
 
 export const Small = styled('p')(P => ({
-  fontSize: theme.FONT_S,
+  fontSize: theme.FONT_SMALL,
   fontWeight: 500,
-  fontFamily: P.bold ? 'cocogoose' : 'helvetica',
+  fontFamily: 'lyac',
   letterSpacing: 0,
   color: theme.PRIMARY_COLOR,
   margin: 0,
@@ -59,9 +59,9 @@ export const Small = styled('p')(P => ({
 }))
 
 export const XSmall = styled('p')(P => ({
-  fontSize: theme.FONT_XS,
+  fontSize: theme.FONT_SMALL,
   fontWeight: 500,
-  fontFamily: P.bold ? 'cocogoose' : 'helvetica',
+  fontFamily: 'lyac',
   letterSpacing: 0,
   color: theme.PRIMARY_COLOR,
   margin: 0,

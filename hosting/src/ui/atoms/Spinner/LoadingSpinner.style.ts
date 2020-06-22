@@ -2,10 +2,11 @@ import styled from 'styled-components'
 import theme from 'ui/assets/theme'
 
 export const Spinner = styled('svg')({
+  margin: 'auto',
   viewBox: '0 0 50 50',
   animation: `rotate 2s linear infinite`,
-  width: theme.SPINNER_RADIUS,
-  height: theme.SPINNER_RADIUS,
+  width: 50,
+  height: 50,
   '@keyframes rotate': {
     '100%': {
       transform: 'rotate(360deg)'

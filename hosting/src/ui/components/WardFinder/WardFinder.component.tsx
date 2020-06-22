@@ -31,11 +31,6 @@ const WardFinder = () => {
       <S.Logo src="/images/lyac.png" alt="LYAC logo" />
       <S.Divider />
       <S.Title>Welcome to the LYAC election ballot</S.Title>
-      <S.Paragraph>
-        You can vote from either your home address or your school (whichever you identify most with). If you are voting
-        from your school it often helps to write 'Elementary School' or 'Secondary School' to ensure it will show up in
-        the search bar below.
-      </S.Paragraph>
       <S.PlacesInput>
         <AutoComplete
           onSelect={selectPlaceInput}
@@ -60,6 +55,11 @@ const WardFinder = () => {
           }}
         />
       </S.PlacesInput>
+      <S.Paragraph>
+        You can vote from either your home address or your school (whichever you identify most with). If you are voting
+        from your school it often helps to write 'Elementary School' or 'Secondary School' to ensure it will show up in
+        the search bar below.
+      </S.Paragraph>
     </S.WardFinder>
   )
 }

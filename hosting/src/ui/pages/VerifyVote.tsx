@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { verifyVote } from 'api/routes'
 import Text from 'ui/atoms/Text'
 import PageLayout from 'ui/layouts/PageLayout'
 
-const CheckEmail = () => {
+const VerifyVote = () => {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      console.log('verifying')
+      verifyVote()
+    }
+  }, [])
+
   return (
     <PageLayout page="ballot" crawl={false} style={{ alignItems: 'center', justifyContent: 'center' }}>
       <img
@@ -14,10 +22,10 @@ const CheckEmail = () => {
           width: 100
         }}
       />
-      <Text size="L" text="We have sent you an email to verify your vote." style={{ textAlign: 'center' }} unique />
+      <Text size="L" text="Thank You!" style={{ textAlign: 'center' }} unique />
       <Text
         size="S"
-        text="Please Note: Your vote will not be counted until the verification link has been clicked."
+        text="Your vote has been cast!"
         style={{ color: '#000', textAlign: 'center' }}
         unique
       />
@@ -25,4 +33,4 @@ const CheckEmail = () => {
   )
 }
 
-export default CheckEmail
+export default VerifyVote

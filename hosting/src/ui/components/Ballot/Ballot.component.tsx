@@ -3,17 +3,20 @@ import pathOr from 'ramda.pathor'
 import { navigate } from '@reach/router'
 import { useSelector } from 'react-redux'
 import { castBallot } from 'api/routes'
+import { auth } from 'services/firebase'
 import useValidateForm from 'ui/hooks/useValidateFormReducer'
 import Checkbox from 'ui/atoms/Checkbox'
 import * as S from './Ballot.style'
 
 const Ballot = () => {
-  const [{ first, last, gender, age, email, vote }, update] = useValidateForm()
+  const [{ first, last, gender, age, email, vote, referendum }, update] = useValidateForm()
   const { address, candidates, ward } = useSelector(s => pathOr({ ward: null, candidates: {} }, ['app'], s))
 
   const submitForm = async (e = null) => {
     if (e) e.preventDefault()
-    if ([first, last, gender, age, email, vote].some(o => o.value !== '' && o.valid === 'valid')) {
+    if ([first, last, gender, age, email, vote, referendum].some(o => o.value !== '' && o.valid === 'valid')) {
+      const services = await auth().fetchSignInMethodsForEmail(email.value)
+      if (services.length) return update({ type: 'already-voted' })
       await castBallot(email.value, {
         address,
         age: age.value,
@@ -21,6 +24,8 @@ const Ballot = () => {
         first: first.value,
         gender: gender.value,
         last: last.value,
+        referendum: referendum.value,
+        verified: false,
         vote: vote.value,
         ward
       })
@@ -83,7 +88,7 @@ const Ballot = () => {
           {email.error && <S.Error>{email.error}</S.Error>}
           <S.Divider height="10px" />
           <S.SubHeading>Your Vote (One Vote Per Person)</S.SubHeading>
-          {Object.entries(candidates).map(([id, { name }]) => (
+          {Object.entries(candidates[ward]).map(([id, name]) => (
             <Checkbox
               key={id}
               id={id}
@@ -93,6 +98,15 @@ const Ballot = () => {
             />
           ))}
           {vote.error && <S.Error>{vote.error}</S.Error>}
+          <S.Divider height="5px" />
+          <S.SubHeading>Referendum Question</S.SubHeading>
+          <S.Text>What could London do to improve transportation for youth?</S.Text>
+          <S.Input
+            value={referendum.value}
+            onChange={e => update({ type: 'referendum', value: e.target.value })}
+            placeholder="Tell us what you think!"
+          />
+          {referendum.error && <S.Error>{referendum.error}</S.Error>}
           <S.Vote onClick={submitForm}>
             <S.Lock src="/images/lock.png" />
             Cast Your Vote
