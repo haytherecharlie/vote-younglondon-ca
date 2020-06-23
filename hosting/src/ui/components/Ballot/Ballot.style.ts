@@ -2,14 +2,15 @@ import styled from 'styled-components'
 import theme from 'ui/assets/theme'
 
 export const Ballot = styled('div')({
-  flex: 1,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'stretch',
   justifyContent: 'flex-start',
   width: `90%`,
   maxWidth: 800,
-  marginBottom: 20
+  marginBottom: 20,
+  minHeight: 300,
+  overflow: 'hidden'
 })
 
 export const Logo = styled('img')({
