@@ -10,7 +10,7 @@ const PageLayout = ({ children, page, crawl, style = {} }) => {
 
   useEffect(() => {
     const now = new Date().getTime()
-    const open = new Date('November 01, 2020 00:00:00').getTime()
+    const open = new Date('October 01, 2020 00:00:00').getTime()
     const close = new Date('November 09, 2020 00:00:00').getTime()
     setOpen(now > open && now < close ? 'open' : 'closed')
   }, [])

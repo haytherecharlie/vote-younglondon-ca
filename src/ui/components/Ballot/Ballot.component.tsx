@@ -6,9 +6,9 @@ import Checkbox from 'ui/atoms/Checkbox'
 import * as S from './Ballot.style'
 
 const Ballot = () => {
-  const [{ first, last, gender, age, email, vote, referendum }, update] = useValidateForm()
+  const [{ first, last, gender, age, email, postal, vote, referendum }, update] = useValidateForm()
 
-  console.log(first)
+  console.log(postal)
   const candidates = {
     '01': 'Aditi Basdeo',
     '02': 'Alice Balluku',
@@ -17,7 +17,7 @@ const Ballot = () => {
     '05': 'Michelle Lim',
     '06': 'Jackson Dobbin',
     '07': 'Maddy McCarville',
-    '08': 'Dylan Parks',
+    // '08': 'Dylan Parks',
     '09': 'Moeez Tahir',
     '10': 'Rimsha Ashraf',
     '11': 'Sophia Yuan',
@@ -57,8 +57,15 @@ const Ballot = () => {
     <S.Ballot>
       <S.Logo src="/images/lyac.png" alt="LYAC logo" />
       <S.Sheet>
-        <S.Title>{`Young London 2020 Ballot`}</S.Title>
+        <S.Title>{`London Youth Advisory Council 2020 Ballot`}</S.Title>
         <S.SubHeading>Personal Information</S.SubHeading>
+        <div style={{ display: 'inline-block' }}>
+          <S.CopyText>
+            Please provide accurate details - false information will invalidate your ballot. To learn more, read our{' '}
+          </S.CopyText>
+          <S.PrivacyLink href="https://younglondon.ca/privacy-policy/">Privacy Policy</S.PrivacyLink>
+        </div>
+
         <form onKeyDown={handleEnter} onSubmit={submitForm}>
           <S.Input
             valid={first.valid}
@@ -94,6 +101,14 @@ const Ballot = () => {
           />
           {age.error && <S.Error>{age.error}</S.Error>}
           <S.Input
+            valid={postal.valid}
+            onKeyDown={handleEnter}
+            value={postal.value}
+            onChange={e => update({ type: 'postal', value: e.target.value.toUpperCase().replace(/\s/g, '') })}
+            placeholder="Postal Code"
+          />
+          {postal.error && <S.Error>{postal.error}</S.Error>}
+          <S.Input
             valid={email.valid}
             onKeyDown={handleEnter}
             value={email.value}
@@ -103,6 +118,10 @@ const Ballot = () => {
           {email.error && <S.Error>{email.error}</S.Error>}
           <S.Divider height="10px" />
           <S.SubHeading>Your Vote (One Vote Per Person)</S.SubHeading>
+          <div style={{ display: 'inline-block' }}>
+            <S.CopyText>To learn more about each candidate, please visit our </S.CopyText>
+            <S.PrivacyLink href="https://younglondon.ca/election" target="_blank">Election Page</S.PrivacyLink>
+          </div>
           {Object.entries(candidates).map(([id, name]) => (
             <Checkbox
               key={id}
@@ -115,7 +134,7 @@ const Ballot = () => {
           {vote.error && <S.Error>{vote.error}</S.Error>}
           <S.Divider height="5px" />
           <S.SubHeading>Referendum Question</S.SubHeading>
-          <S.Text>What could London do to improve transportation for youth?</S.Text>
+          <S.Text>What do you feel is the most pressing issue in your community?</S.Text>
           <S.Input
             valid={referendum.valid}
             value={referendum.value}
@@ -123,7 +142,11 @@ const Ballot = () => {
             placeholder="Tell us what you think!"
           />
           {referendum.error && <S.Error>{referendum.error}</S.Error>}
-          <S.Vote onClick={submitForm} disabled={[first, last, gender, age, email, vote, referendum].some(o => o.value === '' && o.valid !== 'valid')}>
+          <S.Vote
+            onClick={submitForm}
+            disabled={[first, last, gender, age, email, vote, referendum].some(
+              o => o.value === '' && o.valid !== 'valid'
+            )}>
             <S.Lock src="/images/lock.png" />
             Cast Your Vote
           </S.Vote>

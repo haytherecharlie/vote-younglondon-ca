@@ -13,6 +13,16 @@ export const Ballot = styled('div')({
   overflow: 'hidden'
 })
 
+export const CopyText = styled('span')({
+  color: theme.DEFAULT_COLOR,
+  opacity: 0.7
+})
+
+export const PrivacyLink = styled('a')({
+  color: theme.BRAND_COLOR,
+  fontSize: theme.FONT_SMALL
+})
+
 export const Logo = styled('img')({
   height: `auto`,
   margin: `20px auto`,
