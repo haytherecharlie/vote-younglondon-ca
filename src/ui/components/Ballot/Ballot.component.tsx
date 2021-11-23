@@ -6,7 +6,7 @@ import Checkbox from 'ui/atoms/Checkbox'
 import * as S from './Ballot.style'
 
 const Ballot = () => {
-  const [{ first, last, gender, age, email, postal, vote, referendum }, update] = useValidateForm()
+  const [{ first, last, gender, age, email, postal, vote, refTopic, referendum }, update] = useValidateForm()
 
   const candidates = {
     '01': 'Heba Mohamed',
@@ -19,9 +19,26 @@ const Ballot = () => {
     '08': 'Nova Tailanova'
   }
 
+  const referendumTopics = [
+    'substance use and addictions',
+    'community safety',
+    'covid-19',
+    'employment',
+    'environment & climate change',
+    'discrimination',
+    'affordability & financial insecurity',
+    'homelessness & housing',
+    'mental health',
+    'transit',
+    'youth spaces',
+    'other'
+  ]
+
   const submitForm = async (e = null) => {
     if (e) e.preventDefault()
-    if ([first, last, gender, age, email, vote, referendum].some(o => o.value !== '' && o.valid === 'valid')) {
+    if (
+      [first, last, gender, age, email, vote, refTopic, referendum].some(o => o.value !== '' && o.valid === 'valid')
+    ) {
       await castBallot(email.value.toLowerCase(), {
         age: age.value,
         email: email.value.toLowerCase(),
@@ -29,6 +46,7 @@ const Ballot = () => {
         gender: gender.value,
         last: last.value,
         postal: postal.value,
+        refTopic: refTopic[refTopic.value],
         referendum: referendum.value,
         verified: false,
         vote: candidates[vote.value],
@@ -137,6 +155,15 @@ const Ballot = () => {
           <S.Divider height="5px" />
           <S.SubHeading>Referendum Question</S.SubHeading>
           <S.Text>What do you feel is the most pressing issue in your community?</S.Text>
+          {referendumTopics.map((topic, id) => (
+            <Checkbox
+              key={id}
+              id={id}
+              name={topic}
+              vote={refTopic.value}
+              onChange={() => update({ type: 'refTopic', value: id })}
+            />
+          ))}
           <S.Input
             valid={referendum.valid}
             value={referendum.value}
@@ -150,7 +177,7 @@ const Ballot = () => {
               o => o.value === '' && o.valid !== 'valid'
             )}>
             <S.Lock src="/images/lock.png" />
-            Cast Your Vote
+            {`Cast Your Vote`}
           </S.Vote>
         </form>
       </S.Sheet>

@@ -1,4 +1,4 @@
-import { useReducer, useRef } from 'react'
+import { useReducer } from 'react'
 import { vName, vGender, vAge, vEmail, vPhone, vPostal, vVote, vReferendum } from 'ui/helpers/validations'
 
 const useValidateForm = () => {
@@ -11,6 +11,7 @@ const useValidateForm = () => {
     phone: { value: '', valid: 'pending', error: null },
     postal: { value: '', valid: 'pending', error: null },
     vote: { value: '', valid: 'pending', error: null },
+    refTopic: { value: '', valid: 'pending', error: null },
     referendum: { value: '', valid: 'pending', error: null }
   }
 
@@ -61,12 +62,24 @@ const useValidateForm = () => {
           ? { ...state, postal: { ...state.postal, value, valid: valid ? valid : 'valid', error: null } }
           : {
               ...state,
-              postal: { ...state.postal, value, valid: 'invalid', error: 'Please include a valid London, ON postal code.' }
+              postal: {
+                ...state.postal,
+                value,
+                valid: 'invalid',
+                error: 'Please include a valid London, ON postal code.'
+              }
             }
       case 'vote':
         return vVote(value) === 'valid'
           ? { ...state, vote: { ...state.vote, value, valid: valid ? valid : 'valid', error: null } }
           : { ...state, vote: { ...state.vote, value, valid: 'invalid', error: 'Please include a vote.' } }
+      case 'refTopic':
+        return vVote(value) === 'valid'
+          ? { ...state, refTopic: { ...state.refTopic, value, valid: valid ? valid : 'valid', error: null } }
+          : {
+              ...state,
+              refTopic: { ...state.refTopic, value, valid: 'invalid', error: 'Please select a referendum topic.' }
+            }
       case 'referendum':
         return vReferendum(value) === 'valid'
           ? { ...state, referendum: { ...state.referendum, value, valid: valid ? valid : 'valid', error: null } }
