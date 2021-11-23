@@ -8,21 +8,15 @@ import * as S from './Ballot.style'
 const Ballot = () => {
   const [{ first, last, gender, age, email, postal, vote, referendum }, update] = useValidateForm()
 
-  console.log(postal)
   const candidates = {
-    '01': 'Aditi Basdeo',
-    '02': 'Alice Balluku',
+    '01': 'Heba Mohamed',
+    '02': 'Brehleen Virk',
     '03': 'Amy Jing',
-    '04': 'Madeline Noftle',
-    '05': 'Michelle Lim',
-    '06': 'Jackson Dobbin',
-    '07': 'Maddy McCarville',
-    // '08': 'Dylan Parks',
-    '09': 'Moeez Tahir',
-    '10': 'Rimsha Ashraf',
-    '11': 'Sophia Yuan',
-    '12': 'Abdullah Qassab',
-    '13': 'Hawa Ahmed'
+    '04': 'Christabel Thevar',
+    '05': 'Maham Shaikh',
+    '06': 'Sophia Yuan',
+    '07': 'Leon Yang',
+    '08': 'Nova Tailanova'
   }
 
   const submitForm = async (e = null) => {
@@ -34,6 +28,7 @@ const Ballot = () => {
         first: first.value,
         gender: gender.value,
         last: last.value,
+        postal: postal.value,
         referendum: referendum.value,
         verified: false,
         vote: candidates[vote.value],
@@ -57,11 +52,11 @@ const Ballot = () => {
     <S.Ballot>
       <S.Logo src="/images/lyac.png" alt="LYAC logo" />
       <S.Sheet>
-        <S.Title>{`London Youth Advisory Council 2020 Ballot`}</S.Title>
+        <S.Title>{`London Youth Advisory Council 2021 Ballot`}</S.Title>
         <S.SubHeading>Personal Information</S.SubHeading>
         <div style={{ display: 'inline-block' }}>
           <S.CopyText>
-            Please provide accurate details - false information will invalidate your ballot. To learn more, read our{' '}
+            {`Please provide accurate details - false information will invalidate your ballot. To learn more, read our `}
           </S.CopyText>
           <S.PrivacyLink href="https://younglondon.ca/privacy-policy/">Privacy Policy</S.PrivacyLink>
         </div>
@@ -120,7 +115,14 @@ const Ballot = () => {
           <S.SubHeading>Your Vote (One Vote Per Person)</S.SubHeading>
           <div style={{ display: 'inline-block' }}>
             <S.CopyText>To learn more about each candidate, please visit our </S.CopyText>
-            <S.PrivacyLink href="https://younglondon.ca/election" target="_blank">Election Page</S.PrivacyLink>
+            <S.PrivacyLink href="https://younglondon.ca/the-council/meet-the-candidates/" target="_blank">
+              Election Page
+            </S.PrivacyLink>
+            <br />
+            <S.CopyText>
+              Candidates must reach a minimum threshold of 100 votes in order to secure a spot on council.
+            </S.CopyText>
+            <br />
           </div>
           {Object.entries(candidates).map(([id, name]) => (
             <Checkbox
