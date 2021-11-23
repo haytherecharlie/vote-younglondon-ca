@@ -4,7 +4,7 @@ import { useLocation } from '@reach/router'
 import { ga } from 'services/firebase'
 import { formatMessage } from 'ui/language/translations'
 
-const baseURL = 'https://vote-younglondon-ca-43e05.web.app'
+const baseURL = 'https://vote.younglondon.ca'
 
 const SEO = ({ page, crawl }) => {
   const { origin = baseURL, pathname } = useLocation()

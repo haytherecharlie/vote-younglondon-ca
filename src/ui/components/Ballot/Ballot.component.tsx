@@ -6,7 +6,7 @@ import Checkbox from 'ui/atoms/Checkbox'
 import * as S from './Ballot.style'
 
 const Ballot = () => {
-  const [{ first, last, gender, age, email, postal, vote, refTopic, referendum }, update] = useValidateForm()
+  const [{ first, last, gender, age, email, postal, vote, refTopic, consent, referendum }, update] = useValidateForm()
 
   const candidates = {
     '01': 'Heba Mohamed',
@@ -37,10 +37,13 @@ const Ballot = () => {
   const submitForm = async (e = null) => {
     if (e) e.preventDefault()
     if (
-      [first, last, gender, age, email, vote, refTopic, referendum].some(o => o.value !== '' && o.valid === 'valid')
+      [first, last, gender, age, email, vote, refTopic, consent, referendum].some(
+        o => o.value !== '' && o.valid === 'valid'
+      )
     ) {
       await castBallot(email.value.toLowerCase(), {
         age: age.value,
+        emailConsent: consent.value,
         email: email.value.toLowerCase(),
         first: first.value,
         gender: gender.value,
@@ -171,6 +174,15 @@ const Ballot = () => {
             placeholder="Tell us more!"
           />
           {referendum.error && <S.Error>{referendum.error}</S.Error>}
+          <br />
+          <br />
+          <input
+            type="checkbox"
+            value="consent"
+            checked={consent.value === 'yes'}
+            onChange={() => update({ type: 'consent', value: consent.value === 'yes' ? 'no' : 'yes' })}
+          />
+          <S.CopyText> I would like to recieve email updates from Young London</S.CopyText>
           <S.Vote
             onClick={submitForm}
             disabled={[first, last, gender, age, email, vote, referendum].some(

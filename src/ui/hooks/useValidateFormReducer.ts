@@ -8,6 +8,7 @@ const useValidateForm = () => {
     gender: { value: '', valid: 'pending', error: null },
     age: { value: '', valid: 'pending', error: null },
     email: { value: '', valid: 'pending', error: null },
+    consent: { value: "yes", valid: 'valid', error: null },
     phone: { value: '', valid: 'pending', error: null },
     postal: { value: '', valid: 'pending', error: null },
     vote: { value: '', valid: 'pending', error: null },
@@ -18,6 +19,8 @@ const useValidateForm = () => {
   const reducer = (state, action) => {
     const { value = state.value, valid } = action
     switch (action.type) {
+      case 'consent':
+        return { ...state, consent: { ...state.consent, value } }
       case 'first':
         return vName(value) === 'valid'
           ? { ...state, first: { ...state.first, value, valid: valid ? valid : 'valid', error: null } }
