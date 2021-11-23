@@ -73,7 +73,8 @@ export const Input = styled('input')(P => ({
 }))
 
 export const Text = styled('div')({
-  margin: `10px 5px 0 10px`
+  marginTop: `10px`,
+  fontWeight: '999'
 })
 
 export const Lock = styled('img')({

@@ -4,11 +4,13 @@ import { useLocation } from '@reach/router'
 import { ga } from 'services/firebase'
 import { formatMessage } from 'ui/language/translations'
 
+const baseURL = 'https://vote-younglondon-ca-43e05.web.app'
+
 const SEO = ({ page, crawl }) => {
-  const { origin = 'https://vote.younglondon.ca', pathname } = useLocation()
+  const { origin = baseURL, pathname } = useLocation()
 
   useEffect(() => {
-    if (origin === 'https://vote.younglondon.ca') ga().logEvent(`page_view`)
+    if (origin === baseURL) ga().logEvent(`page_view`)
   }, [])
 
   return (
@@ -20,7 +22,7 @@ const SEO = ({ page, crawl }) => {
       <title>{formatMessage(`${page}-seo-title`)}</title>
       <meta name="title" content={formatMessage(`${page}-seo-title`)} />
       <meta name="description" content={formatMessage(`${page}-seo-description`)} />
-      <link rel="canonical" href={`https://vote.younglondon.ca${pathname}`} />
+      <link rel="canonical" href={`${baseURL}${pathname}`} />
       <meta name="robots" content={crawl ? 'index, follow' : 'noindex, follow'} />
       <meta
         name="keywords"
@@ -32,17 +34,17 @@ const SEO = ({ page, crawl }) => {
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={`https://vote.younglondon.ca${pathname}`} />
+      <meta property="og:url" content={`${baseURL}${pathname}`} />
       <meta property="og:title" content={formatMessage(`${page}-seo-title`)} />
       <meta property="og:description" content={formatMessage(`${page}-seo-description`)} />
-      <meta property="og:image" content="https://vote.younglondon.ca/social/og-image.jpg" />
+      <meta property="og:image" content={`${baseURL}/social/og-image.jpg`} />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={`https://vote.younglondon.ca${pathname}`} />
+      <meta property="twitter:url" content={`${baseURL}${pathname}`} />
       <meta property="twitter:title" content={formatMessage(`${page}-seo-title`)} />
       <meta property="twitter:description" content={formatMessage(`${page}-seo-description`)} />
-      <meta property="twitter:image" content={`https://vote.younglondon.ca/social/og-image.jpg`} />
+      <meta property="twitter:image" content={`${baseURL}/social/og-image.jpg`} />
 
       {/* Favicons */}
       <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png" />

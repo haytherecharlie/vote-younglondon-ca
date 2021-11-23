@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow:
-Sitemap: https://vote.younglondon.ca/sitemap.xml
-Host: https://vote.younglondon.ca

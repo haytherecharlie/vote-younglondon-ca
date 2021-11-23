@@ -138,7 +138,7 @@ const Ballot = () => {
             </S.PrivacyLink>
             <br />
             <S.CopyText>
-              Candidates must reach a minimum threshold of 100 votes in order to secure a spot on council.
+              Candidates must reach a minimum threshold of 150 votes in order to secure a spot on council.
             </S.CopyText>
             <br />
           </div>
