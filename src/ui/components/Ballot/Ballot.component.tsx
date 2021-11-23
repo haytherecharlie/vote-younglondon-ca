@@ -46,7 +46,7 @@ const Ballot = () => {
         gender: gender.value,
         last: last.value,
         postal: postal.value,
-        refTopic: refTopic[refTopic.value],
+        refTopic: referendumTopics[refTopic.value],
         referendum: referendum.value,
         verified: false,
         vote: candidates[vote.value],
@@ -168,7 +168,7 @@ const Ballot = () => {
             valid={referendum.valid}
             value={referendum.value}
             onChange={e => update({ type: 'referendum', value: e.target.value })}
-            placeholder="Tell us what you think!"
+            placeholder="Tell us more!"
           />
           {referendum.error && <S.Error>{referendum.error}</S.Error>}
           <S.Vote
