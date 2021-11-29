@@ -1,12 +1,6 @@
 {
-  "startDate": {
-    "seconds": 1637674202963,
-    "nanoseconds": 0
-  },
-  "endDate": {
-    "seconds": 16376747202963,
-    "nanoseconds": 0
-  },
+  "startDate": "November 25, 2021 00:00:00",
+  "endDate": "December 03, 2021 00:00:00",
   "candidates": {
     "1": {
       "9hwhWUqmaXEKYtl4pMkb": "Spoiled Ballot"

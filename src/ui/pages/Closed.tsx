@@ -1,8 +1,11 @@
 import React from 'react'
 import Link from 'ui/atoms/Link'
 import Text from 'ui/atoms/Text'
+import { startDate, endDate } from 'config/default.json'
 
 const Thanks = () => {
+  const startStr = startDate.substring(0, startDate.length - 9)
+  const endStr = endDate.substring(0,endDate.length - 9)
   return (
     <div
       style={{
@@ -25,7 +28,7 @@ const Thanks = () => {
       />
       <Text
         size="M"
-        text="Voting is open from November 1 at 12am to November 8th at 11:59 pm"
+        text={`Voting opens on 12:00 am of ${startStr} and closes at 12:00 am on  ${endStr}`}
         style={{ textAlign: 'center', fontFamily: 'arial' }}
         bold
         unique

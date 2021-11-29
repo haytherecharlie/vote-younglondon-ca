@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import {Redirect} from '@reach/router'
+import { Redirect } from '@reach/router'
 import GlobalStyle from 'ui/assets/theme/global.style'
 import SEO from 'ui/atoms/SEO'
+import { startDate, endDate } from 'config/default.json'
 import Spinner from 'ui/atoms/Spinner'
 import * as S from './PageLayout.style'
 
@@ -10,8 +11,8 @@ const PageLayout = ({ children, page, crawl, style = {} }) => {
 
   useEffect(() => {
     const now = new Date().getTime()
-    const open = new Date('November 20, 2021 00:00:00').getTime()
-    const close = new Date('November 30, 2021 00:00:00').getTime()
+    const open = new Date(startDate).getTime()
+    const close = new Date(endDate).getTime()
     setOpen(now > open && now < close ? 'open' : 'closed')
   }, [])
 
