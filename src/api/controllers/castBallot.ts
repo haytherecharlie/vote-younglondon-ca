@@ -6,10 +6,7 @@ const castBallot = async (email, ballotObj) => {
     const voteDoc = await voteRef.get()
     if (voteDoc.exists) return false
     const resultsRef = db().collection('results').doc(ballotObj.vote)
-    if (resultsRef.exists) {
-      return await Promise.all([voteRef.set(ballotObj), resultsRef.update({ votes: db.FieldValue.increment(1) })])
-    }
-    return await Promise.all([voteRef.set(ballotObj), resultsRef.set({ votes: 1 })])
+    return await Promise.all([voteRef.set(ballotObj), resultsRef.update({ votes: db.FieldValue.increment(1) })])
   } catch (err) {
     throw err
   }
